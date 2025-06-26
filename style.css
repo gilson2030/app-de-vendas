@@ -1,1 +1,139 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #F5F5F5;
+    color: #333;
+}
+header {
+    background-color: #6200EA;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 1.5em;
+}
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+nav button {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+nav button:hover, nav button:focus {
+    background-color: #EDE7F6;
+}
+main {
+    padding: 20px;
+}
+.page {
+    display: none;
+}
+.toolbar {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+.toolbar .primary {
+    background-color: #6200EA;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+.toolbar .primary:hover {
+    background-color: #4500a0;
+}
+input[type="search"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.lista {
+    margin-top: 10px;
+}
+.letra {
+    font-weight: bold;
+    color: #8B4513;
+    margin: 14px 0 5px 0;
+}
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 0;
+    border-bottom: 1px solid #eee;
+}
+.price {
+    color: #FFC600;
+    font-weight: bold;
+    margin-right: 12px;
+}
+.cart {
+    background: #6200EA;
+    color: white;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 1em;
+}
+.abas {
+    display: flex;
+    gap: 5px;
+    margin: 10px 0;
+}
+.abas button {
+    flex: 1;
+    padding: 7px 0;
+    border: none;
+    border-radius: 8px;
+    background: #fff;
+    color: #6200EA;
+    font-weight: bold;
+    cursor: pointer;
+}
+.abas button.active,
+.abas button:focus {
+    background: #FFC600;
+    color: #333;
+}
+.alertas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.alerta {
+    background: #FFF8E1;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+canvas {
+    margin: 20px auto;
+    display: block;
+    max-width: 480px;
+    background-color: white;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.10);
+    margin-top: 20px;
+}
 

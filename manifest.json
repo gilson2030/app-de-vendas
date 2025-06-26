@@ -1,1 +1,22 @@
+{
+  "name": "Rolli Shop - App de Vendas e Estoque",
+  "short_name": "Rolli Shop",
+  "theme_color": "#6200EA",
+  "background_color": "#F5F5F5",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
 

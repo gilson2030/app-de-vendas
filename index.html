@@ -1,1 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolli Shop - App de Vendas e Estoque</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Rolli Shop</h1>
+        </header>
+        <nav>
+            <button onclick="show('produtos')">Produtos</button>
+            <button onclick="show('vendas')">Vendas</button>
+            <button onclick="show('clientes')">Clientes</button>
+            <button onclick="show('relatorios')">Relatórios</button>
+            <button onclick="show('menu')">Menu</button>
+        </nav>
+        <main>
+            <section id="produtos" class="page">
+                <!-- Conteúdo da tela Produtos -->
+                <input type="search" placeholder="Buscar produtos..." />
+                <div class="toolbar">
+                    <button class="primary">Ordenar</button>
+                    <button class="primary">Filtrar</button>
+                </div>
+                <div class="lista">
+                    <div class="letra">A</div>
+                    <div class="item">
+                        <div>
+                            <b>Bolsa de couro transversal</b><br>
+                            SKU: 332
+                        </div>
+                        <div>
+                            <span class="price">R$129,90</span>
+                            <span class="cart">🛒2</span>
+                        </div>
+                    </div>
+                    <div class="letra">B</div>
+                    <div class="item">
+                        <div>
+                            <b>Bolsa de ombro</b><br>
+                            SKU: 364
+                        </div>
+                        <div>
+                            <span class="price">R$79,90</span>
+                            <span class="cart">🛒1</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="vendas" class="page">
+                <!-- Conteúdo da tela Vendas -->
+                <div class="toolbar">
+                    <button class="primary">←</button>
+                    <span>março/2025</span>
+                    <button class="primary">→</button>
+                </div>
+                <div class="abas">
+                    <button class="active">Pendente</button>
+                    <button>Em andamento</button>
+                    <button>Fechado</button>
+                </div>
+                <div class="lista">
+                    <div class="item">
+                        <div>
+                            <b>Cristiano Silva</b><br>
+                            12/03/2025, 08:30
+                        </div>
+                        <div class="price">R$89,90</div>
+                    </div>
+                    <div class="item">
+                        <div>
+                            <b>Angela Lima</b><br>
+                            12/03/2025, 08:23
+                        </div>
+                        <div class="price">R$314,80</div>
+                    </div>
+                </div>
+            </section>
+            <section id="clientes" class="page">
+                <!-- Conteúdo da tela Clientes -->
+                <input type="search" placeholder="Buscar por nome ou CPF/CNPJ..." />
+                <div class="toolbar">
+                    <button class="primary">Exportar</button>
+                    <button class="primary">Novo Cliente</button>
+                </div>
+                <div class="lista">
+                    <div class="letra">A</div>
+                    <div class="item">
+                        <b>Achilley Andrade</b><br>
+                        CPF: 123.456.789-00
+                    </div>
+                    <div class="letra">D</div>
+                    <div class="item">
+                        <b>Adelson Rolly</b><br>
+                        CNPJ: 12.345.678/0001-99
+                    </div>
+                </div>
+            </section>
+            <section id="relatorios" class="page">
+                <!-- Conteúdo da tela Relatórios -->
+                <div class="alertas">
+                    <div class="alerta">🎂 Nenhum cliente fazendo aniversário hoje.</div>
+                    <div class="alerta">⚠️ Parcelas em atraso: 0</div>
+                    <div class="alerta">📦 Produtos com estoque baixo: 2</div>
+                </div>
+                <canvas id="barChart"></canvas>
+                <canvas id="lineChart"></canvas>
+                <canvas id="pieChart"></canvas>
+            </section>
+            <section id="menu" class="page">
+                <!-- Conteúdo da tela Menu -->
+                <div class="lista">
+                    <div class="item"><b>Rolli Shop – Você está logado!</b></div>
+                    <div class="item">Configurações de Loja</div>
+                    <div class="item">Editar Categorias</div>
+                    <div class="item">Usuários Adicionais</div>
+                    <div class="item">Sobre</div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        function show(page) {
+            document.querySelectorAll('.page').forEach(sec => sec.style.display = 'none');
+            document.getElementById(page).style.display = 'block';
+        }
+        show('produtos');
+
+        // Gráficos Chart.js (apenas na aba Relatórios)
+        window.addEventListener('DOMContentLoaded', () => {
+            if (document.getElementById('barChart')) {
+                new Chart(document.getElementById('barChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex'],
+                        datasets: [{
+                            label: 'Vendas por Categoria',
+                            data: [200, 400, 300, 500, 250],
+                            backgroundColor: ['#FFC600', '#FF4081', '#8B4513', '#FF1493', '#FF69B4']
+                        }]
+                    }
+                });
+            }
+            if (document.getElementById('lineChart')) {
+                new Chart(document.getElementById('lineChart'), {
+                    type: 'line',
+                    data: {
+                        labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+                        datasets: [{
+                            label: 'Receita Semanal',
+                            data: [150, 180, 170, 200, 210, 190, 230],
+                            borderColor: '#FFC600',
+                            backgroundColor: 'rgba(255,198,0,0.3)',
+                            fill: true
+                        }]
+                    }
+                });
+            }
+            if (document.getElementById('pieChart')) {
+                new Chart(document.getElementById('pieChart'), {
+                    type: 'pie',
+                    data: {
+                        labels: ['Produto 1', 'Produto 2', 'Produto 3', 'Produto 4'],
+                        datasets: [{
+                            label: 'Principais Produtos',
+                            data: [42, 19, 27, 19],
+                            backgroundColor: ['#6200EA', '#FF4081', '#FFC600', '#8B4513']
+                        }]
+                    }
+                });
+            }
+        });
+
+        // PWA Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js');
+            });
+        }
+    </script>
+</body>
+</html>
 
